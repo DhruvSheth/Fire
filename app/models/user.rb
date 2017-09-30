@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   has_many :groups
 
+  has_many :messages
+
   def is_attending?(event)
     self.event_attendances.where(event_id: event.id).any?
   end
@@ -20,16 +22,24 @@ class User < ApplicationRecord
   def get_members(group)
     members = []
 
-    if (Group.where(event_id: group.event_id).count > 1)
+    if (Group.where(event_id: group.event_id).count <= 1)
       members << self
     else
-      similar_groups = Group.find(event_id: group.event_id)
+      similar_groups = Group.where(event_id: group.event_id)
     
       similar_groups.each do |group|
-        members << User.find(group.user_id)
+        user = User.find(group.user_id)
+
+        members << user unless members.include?(user)
       end
     end
 
     return members
+  end
+
+  def get_messages_in(event)
+    current_group = groups.where(event_id: event.id).first
+
+    current_group.messages
   end
 end

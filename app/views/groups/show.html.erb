@@ -1,5 +1,20 @@
 <h1><%= @event.title %> Group</h1>
 
-<ul> Members:
+<h2>Members</h2>
+<ul>
   <%= render @members %>
+</ul>
+
+<h2>Send a Message:</h2>
+<%= form_for current_user.messages.build do |f| %>
+  <%= f.text_area :text %>
+
+  <%= f.hidden_field :group_id, value: @group.id %>
+
+  <%= f.submit "Send Message" %>
+<% end %>
+
+<h2>Previous Messages:</h2>
+<ul>
+  <%= render @messages %>
 </ul>

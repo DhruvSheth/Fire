@@ -9,6 +9,7 @@
 <% else %>
   <%= form_for current_user.groups.new do |f| %>
     <%= f.hidden_field :event_id, value: @event.id %>
+    <%= f.hidden_field :user_id,  value: current_user.id %>
 
     <%= f.submit "Find Group" %>
   <% end %>

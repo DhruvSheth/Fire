@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :event_attendances, only: [:new, :create]
   resources :interests,         only: [:new, :create, :destroy]
   resources :groups,            only: [:new, :create, :destroy, :show]
+  resources :messages,          only: [:new, :create, :destroy]
 
   root 'static_pages#home'
 
