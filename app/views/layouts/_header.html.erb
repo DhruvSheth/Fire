@@ -1,14 +1,53 @@
-<ul>
-  <li><%= link_to "Home", root_path %></li>
-  <li><%= link_to "About", about_path %></li>
-  <li><%= link_to "Contact", contact_path %></li>
-  <% unless user_signed_in? %>
-    <li><%= link_to "Sign Up", new_user_registration_path %></li>
-    <li><%= link_to "Sign In", new_user_session_path %></li>
-  <% else %>
-    <li><%= link_to "Create an Event", new_event_path %></li>
-    <li><%= link_to "Browse Events", events_path %></li>
-    <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-    <li><%= link_to "My Page", current_user %></li>
-  <% end %>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SideBar menu</title>
+    <meta name = "viewport" content = "width=device-width, initial-scale = 1">
+    <link rel = "stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel = "stylesheet" href = "Style.css">
+</head>
+<body>
+
+<div id = "sidebar">
+
+        <ul>
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to "Contact", contact_path %></li>
+            <% unless user_signed_in? %>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <% else %>
+            <li><%= link_to "Create an Event", new_event_path %></li>
+            <li><%= link_to "Browse Events", events_path %></li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "My Page", current_user %></li>
+            <% end %>
+        </ul>
+
+    <div id = "sidebar-btn">
+        <span></span>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#sidebar-btn').click(function(){
+            $('#sidebar').toggleClass('visible');
+        });
+    });
+</script>
+
+<div id = "main-event-pic">
+    <img src= "http://www.fullhdwpp.com/wp-content/uploads/Fire_flames.jpg"
+         alt= "fire" style="width:85%;height:85%;">
+</div>
+
+
+
+</body>
+</html>
