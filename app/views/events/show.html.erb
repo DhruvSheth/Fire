@@ -6,4 +6,10 @@
 
     <%= f.submit "Attend Event" %>
   <% end %>
+<% else %>
+  <%= form_for current_user.groups.new do |f| %>
+    <%= f.hidden_field :event_id, value: @event.id %>
+
+    <%= f.submit "Find Group" %>
+  <% end %>
 <% end %>

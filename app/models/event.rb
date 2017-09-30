@@ -5,4 +5,6 @@ class Event < ApplicationRecord
 
   has_many :event_attendances
   has_many :attending_users, through: :event_attendances, source: :user
+
+  has_many :groups
 end
