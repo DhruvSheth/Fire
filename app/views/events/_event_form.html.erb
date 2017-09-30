@@ -1,4 +1,4 @@
-<%= form_for @event do |f| %>
+<%= form_for current_user.events.build do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   
