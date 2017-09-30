@@ -9,6 +9,8 @@
   <%= f.label :tag %>
   <%= f.text_field :tag %>
 
+  <%= f.hidden_field :user_id, value: @user.id %>
+
   <%= f.submit "Add interest" %>
 <% end %>
 

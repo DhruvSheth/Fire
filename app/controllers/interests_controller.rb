@@ -1,4 +1,6 @@
 class InterestsController < ApplicationController
+  before_action :assert_correct_user
+
   def new
     @interest = current_user.interests.new
   end
@@ -25,5 +27,12 @@ class InterestsController < ApplicationController
 
     def interest_params
       params.require(:interest).permit(:tag)
+    end
+
+    def assert_correct_user
+      unless(is_current_user?(User.find(params[:interest][:user_id])))
+        flash[:warning] = "Can only change your own tags"
+        redirect_to request.referrer
+      end
     end
 end

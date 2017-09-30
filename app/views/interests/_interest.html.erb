@@ -1,1 +1,10 @@
-<p><%= interest.tag %> <%= link_to "x", interest, method: :delete %></p>
+<p>
+  <%= interest.tag %> 
+  <% if (is_current_user?(@user)) %>
+    <%= form_for interest, method: :delete do |f| %>
+      <%= f.hidden_field :user_id, value: @user.id %>
+
+      <%= f.submit "x" %>
+    <% end %>
+  <% end %>
+</p>
