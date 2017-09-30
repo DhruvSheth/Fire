@@ -1,1 +1,5 @@
 <%= render @event %>
+
+<%= form_for current_user.event_attendances.build %>
+  <%= f.hidden_field :event_id, value: @event.id %>
+<% end %>
