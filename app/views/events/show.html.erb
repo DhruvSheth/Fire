@@ -1,5 +1,9 @@
 <%= render @event %>
 
-<%= form_for current_user.event_attendances.build %>
-  <%= f.hidden_field :event_id, value: @event.id %>
+<% unless (current_user.is_attending?(@event)) %>
+  <%= form_for current_user.event_attendances.new do |f| %>
+    <%= f.hidden_field :event_id, value: @event.id %>
+
+    <%= f.submit "Attend Event" %>
+  <% end %>
 <% end %>

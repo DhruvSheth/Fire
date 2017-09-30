@@ -8,4 +8,8 @@ class User < ApplicationRecord
 
   has_many :event_attendances
   has_many :attended_events, through: :event_attendances, source: :event
+
+  def is_attending?(event)
+    self.event_attendances.where(event_id: event.id).any?
+  end
 end
