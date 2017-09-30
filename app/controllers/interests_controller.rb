@@ -16,6 +16,9 @@ class InterestsController < ApplicationController
   end
 
   def destroy
+    Interest.find(params[:id]).destroy
+
+    redirect_to current_user
   end
 
   private
