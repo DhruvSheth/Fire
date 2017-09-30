@@ -1,4 +1,4 @@
-class EventController < ApplicationController
+class EventsController < ApplicationController
   def new
     @event = Event.new
   end
@@ -22,4 +22,10 @@ class EventController < ApplicationController
   def index
     @events = Event.all
   end
+
+  private
+
+    def event_params
+      params.require(:event).permit(:title, :location, :start_time, :end_time, :description)
+    end
 end
