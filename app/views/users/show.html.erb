@@ -1,5 +1,17 @@
 <h1>I am <%= @user.first_name %></h1>
 
+<h2>My Interests</h2>
+<ul>
+  <%= render @interests %>
+</ul>
+
+<%= form_for @user.interests.build do |f| %>
+  <%= f.label :tag %>
+  <%= f.text_field :tag %>
+
+  <%= f.submit "Add interest" %>
+<% end %>
+
 <h3>Created Events</h3>
 <ul>
   <%= render @created_events %>
