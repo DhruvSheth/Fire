@@ -1,10 +1,12 @@
-<p>
-  <%= interest.tag %> 
-  <% if (is_current_user?(@user)) %>
-    <%= form_for interest, method: :delete do |f| %>
-      <%= f.hidden_field :user_id, value: @user.id %>
+<div class="row">
+  <p>
+    <h4><%= interest.tag %></h4>
+    <% if (is_current_user?(@user)) %>
+      <%= form_for interest, method: :delete, class: "interest-delete" do |f| %>
+        <%= f.hidden_field :user_id, value: @user.id %>
 
-      <%= f.submit "x" %>
+        <%= f.submit "x", class: "btn btn-xs" %>
+      <% end %>
     <% end %>
-  <% end %>
-</p>
+  </p>
+</div>

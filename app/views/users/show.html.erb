@@ -1,25 +1,29 @@
-<h1>I am <%= @user.first_name %></h1>
+<div class="row">
+  <div class='col-md-6 col-md-offset-3'>
+    <h1>I am <%= @user.first_name %></h1>
 
-<h2>My Interests</h2>
-<ul>
-  <%= render @interests %>
-</ul>
+    <h2>My Interests</h2>
+    <ul>
+      <%= render @interests %>
+    </ul>
 
-<%= form_for @user.interests.build do |f| %>
-  <%= f.label :tag %>
-  <%= f.text_field :tag %>
+    <%= form_for @user.interests.build do |f| %>
+      <%= f.label :tag %>
+      <%= f.text_field :tag, class: "form-control" %>
 
-  <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.hidden_field :user_id, value: @user.id %>
 
-  <%= f.submit "Add interest" %>
-<% end %>
+      <%= f.submit "Add interest", class: "btn btn-primary" %>
+    <% end %>
 
-<h3>Created Events</h3>
-<ul>
-  <%= render @created_events %>
-</ul>
+    <h3><%= "Created Events" unless @created_events.empty? %></h3>
+    <ul>
+      <%= render @created_events %>
+    </ul>
 
-<h3>Attending Events</h3>
-<ul>
-  <%= render @attended_events %>
-</ul>
+    <h3><%= "Attending Events" unless @attended_events.empty? %></h3>
+    <ul>
+      <%= render @attended_events %>
+    </ul>
+  </div>
+</div>

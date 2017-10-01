@@ -8,8 +8,15 @@ end
 # Devise
 gem 'devise'
 
+# Bootstrap
+gem 'bootstrap-sass', '3.3.7'
+
 # Pagination
 gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap-will_paginate', '1.0.0'
+
+# JQuery
+gem 'jquery-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

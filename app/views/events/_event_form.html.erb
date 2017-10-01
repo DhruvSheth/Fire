@@ -1,23 +1,18 @@
-<div class="form">
-  <%= form_for current_user.events.build do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %><br><br>
-  
-    <%= f.label :location %>
-    <%= f.text_field :location %><br><br>
-  
-    <%= f.label :start_time %>
-    <%= f.datetime_select :start_time %><br><br>
-  
-    <%= f.label :end_time %>
-    <%= f.datetime_select :end_time %><br><br>
-  
-    <%= f.label :description %>
-    <%= f.text_area :description %><br><br>
+<%= form_for current_user.events.build do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control" %>
 
-    <%= f.label :picture_url %>
-    <%= f.text_field :picture_url %><br><br>
+  <%= f.label :location %>
+  <%= f.text_field :location, class: "form-control" %>
+  
+  <%= f.label :start_time %>
+  <%= f.datetime_select :start_time, class: "form-control" %><br>
+  
+  <%= f.label :end_time %>
+  <%= f.datetime_select :end_time, class: "form-control" %>
+ 
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control" %>
 
-    <%= f.submit "Create Event" %>
-  <% end %>
-</div>
+  <%= f.submit "Create Event", class: "btn btn-primary" %>
+<% end %>
