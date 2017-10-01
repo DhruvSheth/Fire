@@ -30,7 +30,17 @@ class User < ApplicationRecord
       similar_groups.each do |group|
         user = User.find(group.user_id)
 
-        members << user unless members.include?(user)
+        members << user unless members.include?(user) || !interested_in(user)
+      end
+    end
+
+    if (Group.where(event_id: group.event_id).count > 1 && members.size < 5)
+      similar_groups = Group.where(event_id: group.event_id)
+    
+      similar_groups.each do |group|
+        user = User.find(group.user_id)
+
+        members << user unless members.include?(user) || members.size == 5
       end
     end
 
@@ -42,4 +52,24 @@ class User < ApplicationRecord
 
     current_group.messages
   end
+
+  private
+
+    def interested_in(user)
+      user_interests = user.interests
+
+      same_interests = 0;
+      user_interests.each do |interest|
+        same_interests += 1 if interests.include?(interest)
+      end
+
+      return same_interests >= 2
+    end
 end
+
+
+
+
+
+
+
