@@ -11,6 +11,9 @@ class GroupsController < ApplicationController
     @members.each do |member|
       @messages.concat(member.get_messages_in(@event))
     end
+
+    @messages = @messages.sort_by &:created_at
+    @messages = @messages.reverse
   end
 
   def new
