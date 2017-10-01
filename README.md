@@ -1,24 +1,11 @@
-# README
+# Fire
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fire is a web app that pairs you up with a group of similarly minded people
+to go to new and undfamiliar events or activities with without feeling lost
+or left out!
 
-Things you may want to cover:
+## About
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Simply brows the events page and click to attend all the events that you are
+interested in. Then, you can choose to join a group and start talking to
+eachother immediately!
