@@ -1,6 +1,6 @@
+# A User can attend events and join groups based on his or her interests,
+# login and session information is handled by Devise.
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -15,10 +15,13 @@ class User < ApplicationRecord
 
   has_many :messages
 
+  # Is this User attending the given event?
   def is_attending?(event)
     self.event_attendances.where(event_id: event.id).any?
   end
 
+  # Returns an array of members with like interests who are interested
+  # in joining the given group.
   def get_members(group)
     members = []
 
@@ -47,6 +50,8 @@ class User < ApplicationRecord
     return members
   end
 
+  # Gets all the messages the User has sent in his or her
+  # group for the current event.
   def get_messages_in(event)
     current_group = groups.where(event_id: event.id).first
 
@@ -55,6 +60,8 @@ class User < ApplicationRecord
 
   private
 
+    # Does the given User share in enough interests as this User
+    # for them to enjoy being grouped up.
     def interested_in(user)
       user_interests = user.interests
 
@@ -66,10 +73,3 @@ class User < ApplicationRecord
       return same_interests >= 2
     end
 end
-
-
-
-
-
-
-
